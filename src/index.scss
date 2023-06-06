@@ -1,0 +1,21 @@
+@import './theme/theme.scss';
+
+@mixin wight($w, $h) {
+	width: $w;
+	height: $h;
+}
+
+@mixin marpad ($m, $p) {
+	margin: $m;
+	padding: $p;
+}
+
+
+html,
+body {
+	@include marpad(0, 0);
+	@include wight(100vw, 100vh);
+	overflow: hidden;
+
+	background-color: $background-color;
+}

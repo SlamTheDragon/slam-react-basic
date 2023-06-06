@@ -1,0 +1,17 @@
+$color: var(--color);
+$color-i: var(--color-i);
+
+$primary: var(--primary);
+$secondary: var(--secondary);
+
+$background-color: var(--background-color);
+
+:root {
+    --color: #000;
+    --color-i: #fff;
+
+    --primary: #000;
+    --secondary: #000;
+
+    --background-color: #000;
+}
