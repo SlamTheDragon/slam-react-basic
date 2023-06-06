@@ -1,2 +1,3 @@
 # slam-react-basic
- React Template for Slam which includes SCSS and Typescript
+
+React Template for Slam which includes SCSS and Typescript
