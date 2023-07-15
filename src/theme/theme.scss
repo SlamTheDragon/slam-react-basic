@@ -1,3 +1,4 @@
+// # [GLOBALIZED VARIABLES]
 $color: var(--color);
 $color-i: var(--color-i);
 
@@ -6,12 +7,28 @@ $secondary: var(--secondary);
 
 $background-color: var(--background-color);
 
-:root {
-    --color: #000;
-    --color-i: #fff;
 
+// # [BASE THEME]
+:root {
+    // text colors
+    --color: #ffffff;
+    --color-i: #000000;
+
+    // accent colors
     --primary: #000;
     --secondary: #000;
 
-    --background-color: #000;
+    // background colors
+    --background-color: #000c29;
+
+    // miscellaneous
+    // --name: ;
+}
+
+// # [OTHER THEMES]
+[data-theme="dark"] {
+    // # duplicate root variables you want to set here
+
+    --color: #000000;
+    --color-i: #ffffff;
 }

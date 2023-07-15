@@ -1,15 +1,41 @@
-@import './theme/theme.scss';
+@import "./theme/theme.scss";
+
+// # [VARIABLES]
+
+// # [MIXINS]
 
 @mixin wight($w, $h) {
 	width: $w;
 	height: $h;
 }
 
-@mixin marpad ($m, $p) {
+@mixin marpad($m, $p) {
 	margin: $m;
 	padding: $p;
 }
 
+@mixin flex-center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+@mixin no-select {
+	user-select: none; 			// Standard syntax 
+	-ms-user-select: none; 		// IE 10 and IE 11 
+	-webkit-user-select: none; 	// Safari 
+}
+
+// # [COMPONENTS]
+.interface {
+	@include flex-center();
+	@include wight(100vw, 100vh);
+	@include no-select();
+
+	flex-direction: column;
+}
+
+// # [ROOT]
 
 html,
 body {
@@ -17,5 +43,8 @@ body {
 	@include wight(100vw, 100vh);
 	overflow: hidden;
 
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+
+	color: $color;
 	background-color: $background-color;
 }
