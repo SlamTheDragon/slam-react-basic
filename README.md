@@ -38,7 +38,7 @@ src/
 
 ## Flow and Design
 
-Here is my basic workflow/design in this template
+Here is my basic workflow/design for this template
 
 - **STYLING** (All Styles are referenced from the parent file. No inline/local css/scss files beside component.)
 
