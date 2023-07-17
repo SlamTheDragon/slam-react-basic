@@ -9,7 +9,7 @@
 	height: $h;
 }
 
-@mixin marpad($m, $p) {
+@mixin mar-pad($m, $p) {
 	margin: $m;
 	padding: $p;
 }
@@ -26,7 +26,60 @@
 	-webkit-user-select: none; 	// Safari 
 }
 
+@mixin shadow {
+	box-shadow: 0px 10px 44px -19px $shadow-color;
+	-webkit-box-shadow: 0px 10px 44px -19px $shadow-color;
+	-moz-box-shadow: 0px 10px 44px -19px $shadow-color;
+}
+
+@mixin focus-style {
+	&:focus,
+	&:focus-within {
+		outline: none;
+	}
+
+	&:focus-visible {
+		outline: 3px solid $primary;
+		outline-offset: 3px;
+		transition: none;
+	}
+}
+
+// # [COMPONENT MIXINS]
+
+@mixin btn {
+	@include shadow;
+	@include wight(unset, 38px);
+	@include mar-pad(unset, 0 15px);
+	@include focus-style;
+	@include flex-center();
+
+	// extract or create a new default color for buttons
+	background-color: $primary;
+	border-radius: 10px;
+	border: none;
+
+	cursor: pointer;
+
+	color: $color;
+	fill: $color;
+	font-size: 14px;
+	text-decoration: none;
+
+	&:hover {
+		background-color: $primary;
+		filter: brightness(95%);
+	}
+
+	&:active {
+		background-color: $primary;
+		filter: brightness(110%);
+	}
+}
+
 // # [COMPONENTS]
+
+// --[ MAIN ]--
 .interface {
 	@include flex-center();
 	@include wight(100vw, 100vh);
@@ -35,16 +88,37 @@
 	flex-direction: column;
 }
 
+.btn {
+	@include btn();
+}
+
 // # [ROOT]
 
 html,
 body {
-	@include marpad(0, 0);
+	@include mar-pad(0, 0);
 	@include wight(100vw, 100vh);
+
 	overflow: hidden;
-
 	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-
 	color: $color;
 	background-color: $background-color;
+}
+
+a {
+	@include focus-style();
+
+	text-decoration: none;
+	font-weight: bold;
+	color: $color;
+
+	&:hover {
+		color: $primary;
+		filter: brightness(95%);
+	}
+
+	&:active {
+		color: $primary;
+		filter: brightness(110%);
+	}
 }

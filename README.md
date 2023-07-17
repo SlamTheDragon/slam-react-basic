@@ -8,7 +8,8 @@ The main packages are listed as follows:
 
 - React Typescript
 - SASS/SCSS
-- Redux
+- React Redux/Redux Toolkit
+- *(No bootstrap and bootstrap icons for full customizability)*
 
 ## Folder Structure
 
@@ -24,16 +25,20 @@ src/
 ├── theme/
 │   └── theme.scss
 ├── store/
-│   └── (your store files).ts
+│   └── store.ts
 ├── assets/
 │   ├── images/
 │   ├── sounds/
 │   └── videos/
 └── components/
+    ├── .Interface/
+    │   └── Interface.tsx
     ├── common/
     │   └── (your common bootstrapped components).tsx
-    └── Interface/
-        └── Interface.tsx
+    ├── widgets/
+    │   └── (your custom components).tsx
+    └── slice/
+        └── (redux slices for components).ts
 ```
 
 ## Flow and Design
@@ -74,6 +79,6 @@ Here is my basic workflow/design for this template
     └── components/
         ├── common/
         │   └── (your common bootstrapped components).tsx
-        └── custom/
+        └── widgets/
             └── (custom components that doesnt fit in the common context).tsx
     ```

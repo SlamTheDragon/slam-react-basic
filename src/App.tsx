@@ -2,7 +2,9 @@ import { useState, useEffect } from "react";
 import { imageFiles } from "./utils/imagesFiles";
 import { soundEffectFiles } from "./utils/sfxFiles";
 import { videoFiles } from "./utils/videoFiles";
-import Interface from "./components/Interface/Interface";
+import { Provider } from "react-redux";
+import Interface from "./components/.Interface/Interface";
+import store from "./store/store";
 
 
 function App() {
@@ -58,7 +60,9 @@ function App() {
 
 	
 	return (
-		<Interface/>
+		<Provider store={store}>
+			<Interface/>
+		</Provider>
 	);
 }
 

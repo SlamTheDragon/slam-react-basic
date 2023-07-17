@@ -7,6 +7,8 @@ $secondary: var(--secondary);
 
 $background-color: var(--background-color);
 
+$shadow-color: var(--shadow-color);
+
 
 // # [BASE THEME]
 :root {
@@ -15,14 +17,14 @@ $background-color: var(--background-color);
     --color-i: #000000;
 
     // accent colors
-    --primary: #000;
-    --secondary: #000;
+    --primary: #0088ff;
+    --secondary: #8400ff;
 
     // background colors
     --background-color: #000c29;
 
     // miscellaneous
-    // --name: ;
+    --shadow-color: #000; 
 }
 
 // # [OTHER THEMES]
