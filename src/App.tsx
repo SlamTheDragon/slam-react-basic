@@ -2,13 +2,18 @@ import { useState, useEffect } from "react";
 import { imageFiles } from "./utils/imagesFiles";
 import { soundEffectFiles } from "./utils/sfxFiles";
 import { videoFiles } from "./utils/videoFiles";
-import { Provider } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { closeModal, modalState } from "./components/slice/modalSlice";
+import { readHeader } from "./components/slice/modalHeaderSlice";
 import Interface from "./components/.Interface/Interface";
-import store from "./store/store";
+import Modal from "./components/common/Modal";
 
 
 function App() {
 	/****/  // You can setup this asset preloaders if needed. Removed if you want all assets to lazy-load
+	/****/
+	/****/  // Perhaps... Refactor?
+	/****/
 	/****/  const [isLoading, setIsLoading] = useState(true); // use isLoading if you want to hide the interface at start
 	/****/  const [totalLoaded, setLoadedAssets] = useState(0);
 	/****/ 
@@ -59,10 +64,38 @@ function App() {
 	/****/ 	}, []);
 
 	
+	/***************[ INITIALIZERS ]**************/
+
+	// Redux get
+	// ...
+	const isModalOpen = useSelector(modalState)
+	const getHeader = useSelector(readHeader)
+
+	// Redux set
+	const dispatch = useDispatch()
+
+	// Initiate Event Listeners
+	// ...
+	document.addEventListener('keydown', handleEscapeKeyPress);
+	
+
+	/***************[ SURFACE FUNCTIONS ]**************/
+
+	function handleEscapeKeyPress(event: KeyboardEvent) {
+		if (event.key === 'Escape') {
+			dispatch(closeModal())
+		}
+	}
+
+	
 	return (
-		<Provider store={store}>
+		<>
+			<Modal modalTitle={getHeader} isOpen={isModalOpen} onClose={() => dispatch(closeModal())}>
+				WIP: Add payload ID to determine interface <br />
+				<strong>TIP:</strong> use redux devtools for fun, idk (someone help me it keeps crashing) :3c
+			</Modal>
 			<Interface/>
-		</Provider>
+		</>
 	);
 }
 
