@@ -8,7 +8,6 @@ export const modalHeaderSlice = createSlice({
     },
     reducers: {
         setHeader: (state, action: PayloadAction<string>) => {
-            console.log(action.payload)
             state.value = action.payload
         }
     }

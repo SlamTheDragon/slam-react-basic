@@ -3,10 +3,15 @@ import { imageFiles } from "./utils/imagesFiles";
 import { soundEffectFiles } from "./utils/sfxFiles";
 import { videoFiles } from "./utils/videoFiles";
 import { useDispatch, useSelector } from "react-redux";
-import { closeModal, modalState } from "./components/slice/modalSlice";
-import { readHeader } from "./components/slice/modalHeaderSlice";
+import { closeModal, modalState } from "./components/slice/modal-slices/modalSlice";
+import { readHeader } from "./components/slice/modal-slices/modalHeaderSlice";
 import Interface from "./components/.Interface/Interface";
 import Modal from "./components/common/Modal";
+import Sample1 from "./components/widgets/modal-contents/SsampleContentA";
+import DefaultModal from "./components/widgets/modal-contents/DefaulModal";
+import Sample2 from "./components/widgets/modal-contents/SsampleContentB";
+import Sample3 from "./components/widgets/modal-contents/SsampleContentC";
+import { readModalInterface } from "./components/slice/modal-slices/modalInterfaceSlice";
 
 
 function App() {
@@ -70,17 +75,16 @@ function App() {
 	// ...
 	const isModalOpen = useSelector(modalState)
 	const getHeader = useSelector(readHeader)
+	const getInterfaceID = useSelector(readModalInterface)
 
 	// Redux set
 	const dispatch = useDispatch()
 
-	// Initiate Event Listeners
-	// ...
+	// Initialize
 	document.addEventListener('keydown', handleEscapeKeyPress);
-	
+
 
 	/***************[ SURFACE FUNCTIONS ]**************/
-
 	function handleEscapeKeyPress(event: KeyboardEvent) {
 		if (event.key === 'Escape') {
 			dispatch(closeModal())
@@ -90,9 +94,31 @@ function App() {
 	
 	return (
 		<>
-			<Modal modalTitle={getHeader} isOpen={isModalOpen} onClose={() => dispatch(closeModal())}>
-				WIP: Add payload ID to determine interface <br />
-				<strong>TIP:</strong> use redux devtools for fun, idk (someone help me it keeps crashing) :3c
+			<Modal
+				// Hover/Open component source for definition
+				//
+				// Usage:
+				// ... Component() {
+				// 		const foo = useModalOperation()
+				//
+				//		return (
+				//				<button onClick={() => foo( modalTitle: string, modalInterfaceID: number }> Open Modal </button>	
+				// 		)
+				// }
+
+				modalTitle={getHeader}
+				isOpen={isModalOpen}
+				onClose={() => dispatch(closeModal())}
+				selectInterface={getInterfaceID}
+				selectAction={0}
+			>
+				{/* You Can Remove This */}
+				<DefaultModal key={0} />
+
+				{/* List All Components */}
+				<Sample1 key={1} />
+				<Sample2 key={2} />
+				<Sample3 key={3} />
 			</Modal>
 			<Interface/>
 		</>

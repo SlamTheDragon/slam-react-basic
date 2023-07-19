@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux'
 import { increment, decrement, selectCount } from '../slice/counterSlice'
-import { openModal } from '../slice/modalSlice'
+import { useModalOperation } from '../../utils/component-utils/modalOperation';
 import logo from "../../assets/images/logo192.png"
 import Button from "../common/Button";
 
@@ -13,10 +13,11 @@ export default function Interface() {
     const count = useSelector(selectCount)
     // set
     const dispatch = useDispatch()
+    const openModal = useModalOperation()
+
 
     return (
         <>
-
             <div className="interface">
                 <img src={logo} alt="logo" draggable="false" />
 
@@ -31,8 +32,7 @@ export default function Interface() {
                     </h1>
                     <Button onClick={() => dispatch(increment())}>+</Button>
 
-                    {/* FIXME: add modal context */}
-                    <Button onClick={() => dispatch(openModal())}>Feature Toggle</Button>
+                    <Button onClick={() => openModal("Sample Title", count)}>Feature Toggle</Button>
                 </div>
 
 
